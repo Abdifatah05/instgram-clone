@@ -81,3 +81,10 @@ header .profile{
 .interaction .comment{
     padding-left: 2px;
 }
+
+@media(max-width: 600px){
+    .container{
+        border: none;
+        width: 100%;
+    }
+}

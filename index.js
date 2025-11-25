@@ -53,8 +53,7 @@ function renderPost(){
             </div>
             <p class="likes bold-text">${posts[i].likes} likes</p>
             <div class="comment-section">
-                <p class="username bold-text">${posts[i].username}</p>
-                <p class="comment">${posts[i].comment}</p>
+                <p class="username"><span class="bold-text">${posts[i].username}</span>  ${posts[i].comment}</p>
             </div>
         </section>
         `
