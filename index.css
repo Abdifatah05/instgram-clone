@@ -68,6 +68,9 @@ header .profile{
     height: 35px;
     padding-right: 10px;
 }
+.interaction img:hover{
+    height: 45px;
+}
 .interaction .bold-text{
     font-weight: bold;
 }
