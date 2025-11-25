@@ -7,7 +7,8 @@ const posts = [
         avatar: "images/avatar-vangogh.jpg",
         post: "images/post-vangogh.jpg",
         comment: "just took a few mushrooms lol",
-        likes: 21
+        likes: 21,
+        liked: 0
     },
     {
         name: "Gustave Courbet",
@@ -16,7 +17,8 @@ const posts = [
         avatar: "images/avatar-courbet.jpg",
         post: "images/post-courbet.jpg",
         comment: "i'm feelin a bit stressed tbh",
-        likes: 4
+        likes: 4,
+        liked: 0
     },
         {
         name: "Joseph Ducreux",
@@ -25,9 +27,11 @@ const posts = [
         avatar: "images/avatar-ducreux.jpg",
         post: "images/post-ducreux.jpg",
         comment: "gm friends! which coin are YOU stacking up today?? post below and WAGMI!",
-        likes: 152
+        likes: 152,
+        liked: 0
     }
 ]
+const heart = "images/icon-heart.png"
 
 function renderPost(){
     main.innerHTML= ""
@@ -47,7 +51,7 @@ function renderPost(){
 
         <section class="interaction">
             <div>
-                <img src="images/icon-heart.png" alt="like" class="like-btn pointer" data-index="${i}">
+                <img src="${posts[i].liked ? 'images/heart.png': 'images/icon-heart.png'}" alt="like" class="like-btn pointer" data-index="${i}">
                 <img src="images/icon-comment.png" alt="comment" class="pointer">
                 <img src="images/icon-dm.png" alt="dm" class="pointer">
             </div>
@@ -72,8 +76,14 @@ function setupLikeButtons() {
 
             const index = this.getAttribute("data-index");
 
-            posts[index].likes++;
-
+            if (posts[index].liked) {
+                posts[index].likes--;     // unlike
+                posts[index].liked = false;
+            } else {
+                posts[index].likes++;     // like
+                posts[index].liked = true;
+            }
+            
             renderPost();
         });
     }
@@ -87,7 +97,13 @@ function setupDoubleClick(){
 
             const index = this.getAttribute("data-index");
 
-            posts[index].likes++;
+            if (posts[index].liked) {
+                posts[index].likes--;     // unlike
+                posts[index].liked = false;
+            } else {
+                posts[index].likes++;     // like
+                posts[index].liked = true;
+            }
 
             renderPost();
         })
