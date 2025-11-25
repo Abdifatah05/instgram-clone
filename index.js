@@ -1,3 +1,4 @@
+const main = document.getElementById("main")
 const posts = [
     {
         name: "Vincent van Gogh",
@@ -27,4 +28,56 @@ const posts = [
         likes: 152
     }
 ]
+
+function renderPost(){
+    main.innerHTML= ""
+    for(let i=0; i<posts.length; i++){
+        main.innerHTML +=`
+        <section class="uplouder-info">
+            <img src="${posts[i].avatar}" alt="profile picture of ${posts[i].name}" class="profile pointer">
+            <div>
+                <h1 class="pointer">${posts[i].name}</h1>
+                <p class="pointer">${posts[i].location}</p>
+            </div>
+        </section>
+
+        <section class="post">
+            <img src="${posts[i].post}" alt="post from ${posts[i].name}">
+        </section>
+
+        <section class="interaction">
+            <div>
+                <img src="images/icon-heart.png" alt="like" class="like-btn pointer" data-index="${i}">
+                <img src="images/icon-comment.png" alt="comment" class="pointer">
+                <img src="images/icon-dm.png" alt="dm" class="pointer">
+            </div>
+            <p class="likes bold-text">${posts[i].likes} likes</p>
+            <div class="comment-section">
+                <p class="username bold-text">${posts[i].username}</p>
+                <p class="comment">${posts[i].comment}</p>
+            </div>
+        </section>
+        `
+    }
+    setupLikeButtons()
+
+}
+
+function setupLikeButtons() {
+    const likeButtons = document.querySelectorAll(".like-btn");
+
+    for (let i = 0; i < likeButtons.length; i++) {
+
+        likeButtons[i].addEventListener("click", function () {
+
+            const index = this.getAttribute("data-index");
+
+            posts[index].likes++;
+
+            renderPost();
+        });
+    }
+}
+
+renderPost()
 

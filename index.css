@@ -10,6 +10,9 @@
     border-radius: 20px;
     overflow: hidden;
 }
+.pointer{
+    cursor: pointer;
+}
 img{
     max-width: 600px;
 }
@@ -26,8 +29,11 @@ main{
     width: 150px;
 }
 .profile{
-    height: 50px;
+    width: 50px;
     border-radius: 50%;
+}
+header .profile{
+    align-self: center;
 }
 
 .uplouder-info {
@@ -46,12 +52,17 @@ main{
 
 .post{
     padding: 20px 0;
+    width: 100%;
+}
+.post img{
+    width: 100%;
 }
 
 .interaction {
     display: flex;
     flex-direction: column;
     padding-left: 10px;
+    padding-bottom: 20px;
 }
 .interaction img{
     height: 35px;
