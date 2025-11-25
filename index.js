@@ -41,7 +41,7 @@ function renderPost(){
             </div>
         </section>
 
-        <section class="post">
+        <section class="post" data-index="${i}">
             <img src="${posts[i].post}" alt="post from ${posts[i].name}">
         </section>
 
@@ -60,6 +60,7 @@ function renderPost(){
         `
     }
     setupLikeButtons()
+    setupDoubleClick()
 
 }
 
@@ -76,6 +77,21 @@ function setupLikeButtons() {
 
             renderPost();
         });
+    }
+}
+
+function setupDoubleClick(){
+    const post = document.querySelectorAll(".post")
+
+    for (let i = 0; i < post.length; i++) {
+        post[i].addEventListener('dblclick', function(){
+
+            const index = this.getAttribute("data-index");
+
+            posts[index].likes++;
+
+            renderPost();
+        })
     }
 }
 
