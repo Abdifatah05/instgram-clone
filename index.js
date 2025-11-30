@@ -50,7 +50,7 @@ function renderPost(){
         </section>
 
         <section class="interaction">
-            <div>
+            <div class="like-comment-dm">
                 <img src="${posts[i].liked ? 'images/heart.png': 'images/icon-heart.png'}" alt="like" class="like-btn pointer" data-index="${i}">
                 <img src="images/icon-comment.png" alt="comment" class="pointer">
                 <img src="images/icon-dm.png" alt="dm" class="pointer">
